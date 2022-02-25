@@ -1,0 +1,148 @@
+<div class="hover_bkgr_fricc">
+	<div class="in-page">
+		 
+		 
+	</div>
+</div>
+ 
+	
+<h3 class="link">Registering.. please wait </h3>
+ 
+<a id="five" href="" target="_blank"></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+var origin   = window.location.href;  
+var sURLVariables = origin.split('&');
+//console.log(sURLVariables); 
+var nn = sURLVariables[8];
+var nn2 = nn.replace("wj_next_event_date=", " ");
+var nn3 = nn2.replace("%2C+", " ");
+var nn4 = nn3.replace("+", " ");
+var nn5 = nn4.replace("+", " ");
+//console.log(nn5); 
+sessionStorage.setItem("wj_next_event_date", nn5);
+
+ var time = sURLVariables[9];
+var time2 = time.replace("wj_next_event_time=", " ");
+var time3 = time2.replace("%", ":");
+var time4 = time3.replace("3A", "");
+var time5 = time4.replace("+", " ");
+//console.log(time5);
+sessionStorage.setItem("wj_next_event_time", time5);
+ 
+var place = sURLVariables[10];
+var place2 = place.replace("wj_next_event_timezone=", " ");
+var place3 = place2.replace("%2C+", " ,");
+var place4 = place3.replace("%2C+", " ,");
+var place5 = place4.replace("%2C+", " ,");
+var place6 = place5.replace("+", " ,");
+var place7 = place6.replace("+", " ,");
+var place8 = place7.replace("%2B", " "); 
+var place9 = place8.replace("%3A", ":");
+//console.log(place9);
+sessionStorage.setItem("wj_next_event_timezone", place9);
+
+
+var place1 = sURLVariables[5];
+var url2 = place1.replace("wj_lead_unique_link_live_room=", "");
+var url3 = url2.replace("%3A%2F%2F", "://");
+var url4 = url3.replace("%2F", "/");
+var url5 = url4.replace("%2F", "/");
+var url6 = url5.replace("%2F", "/");
+var url7 = url6.replace("%2F", "/"); 
+//console.log(url7); 
+
+
+  window.localStorage.setItem("wj_lead_unique_link_live_room", url7);
+
+
+$('#five').text(url7); 
+$('#five').attr( 'href',url7);
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+  });
+
+$(document).ready(function(){
+
+var origin   = window.location.href;  
+var sURLVariables = origin.split('&');
+var place = sURLVariables[10];
+var place2 = place.replace("wj_next_event_timezone=", " ");
+var place3 = place2.replace("%2C+", " ,");
+var place4 = place3.replace("%2C+", " ,");
+var place5 = place4.replace("%2C+", " ,");
+var place6 = place5.replace("+", " ,");
+var place7 = place6.replace("+", " ,");
+var place8 = place7.replace("%2B", " "); 
+var place9 = place8.replace("%3A", ":");
+//console.log(place9);
+sessionStorage.setItem("wj_next_event_timezone", place9);
+
+
+var place1 = sURLVariables[5];
+var url2 = place1.replace("wj_lead_unique_link_live_room=", "");
+var url3 = url2.replace("%3A%2F%2F", "://");
+var url4 = url3.replace("%2F", "/");
+var url5 = url4.replace("%2F", "/");
+var url6 = url5.replace("%2F", "/");
+var url7 = url6.replace("%2F", "/"); 
+
+
+var transfer_data  = { url7 : 'wj_lead_unique_link_live_room', place9 : 'wj_next_event_timezone' };  
+/*jQuery.support.cors = true;
+$.ajax({
+    url:"https://developer.dbuglab.com/webinar/insert.php",
+    type:'POST',
+    dataType: 'jsonp',
+    crossDomain: true,
+    data: originss,
+    //data: origin,
+    success:function(json){
+         // do stuff with json (in this case an array)
+         alert("Success");
+     },
+     error:function(){
+         alert("Error");
+     } 
+});*/
+
+
+$.ajax({
+    xhrFields: {
+        withCredentials: true
+    },
+    type: "POST",
+    url: "https://developer.dbuglab.com/webinar/insert.php",
+	
+	 data:"wj_lead_unique_link_live_room="+url7,
+	
+}).done(function (data) {
+    console.log(data);
+});
+ window.location.replace("https://azfarhaider.com/webinar-registration-thankyou/");
+ 
+});
+</script>
+
+
+

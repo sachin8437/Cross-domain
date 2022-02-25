@@ -1,0 +1,40 @@
+<div class="date-time">
+	<p id="eight"></p><p id="nine"></p>
+</div>
+	
+<p id="ten"></p>
+<h3 class="link">Your webinar link</h3>
+ 
+<a id="five" href="" target="_blank">Click Here</a>
+<br><br>
+<p id="links_here"></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+
+var urls;
+  $.ajax({
+    xhrFields: {
+        withCredentials: true
+    },
+    type: "POST",
+    url: "https://developer.dbuglab.com/webinar/select.php",
+	data:urls
+	
+}).done(function (data) {
+    //console.log(data);
+	   $('#links_here').html(data);
+	 //$("#links_here").appendTo(data);
+	 $("#links_here").append(data.urls);
+	 $('#five').attr('href', data.urls);
+});
+ 
+
+
+ 
+
+  });
+
+ 
+</script>
